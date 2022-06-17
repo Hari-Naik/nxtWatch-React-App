@@ -15,6 +15,8 @@ import {
   VideosContainer,
   FailureViewContainer,
   FailureViewImg,
+  FailureViewText,
+  FailureViewDescription,
 } from './styledComponents'
 
 const SavedVideos = () => (
@@ -76,12 +78,12 @@ const SavedVideos = () => (
 
       const renderSavedVideos = () => (
         <VideosListContainer>
-          <TrendingBanner>
+          <TrendingBanner isDark={isDark}>
             <TrendingCard>
-              <IconContainer>
+              <IconContainer isDark={isDark}>
                 <MdWhatshot size={25} color="#ff0437" />
               </IconContainer>
-              <Text>Saved Videos</Text>
+              <Text isDark={isDark}>Saved Videos</Text>
             </TrendingCard>
           </TrendingBanner>
           {renderVideos()}
@@ -94,8 +96,12 @@ const SavedVideos = () => (
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
             alt="no saved videos"
           />
-          <h2>No Saved Videos Found</h2>
-          <p>You can save your videos while watching them</p>
+          <FailureViewText isDark={isDark}>
+            No Saved Videos Found
+          </FailureViewText>
+          <FailureViewDescription>
+            You can save your videos while watching them
+          </FailureViewDescription>
         </FailureViewContainer>
       )
 

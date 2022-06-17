@@ -7,7 +7,7 @@ export const SidebarContainer = styled.div`
   height: 90vh;
   width: 35vh;
   padding-top: 25px;
-  background-color: ${props => props.isDark && '#181818'};
+  background-color: ${props => (props.isDark ? '#313131' : '#ffffff')};
   @media (max-width: 592px) {
     display: none;
   }

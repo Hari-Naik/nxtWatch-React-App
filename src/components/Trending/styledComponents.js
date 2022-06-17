@@ -39,7 +39,7 @@ export const TrendingBanner = styled.div`
   background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
   @media (min-width: 768px) {
     width: 100%;
-    height: 250px;
+    height: 120px;
     padding-left: 15px;
   }
 `
@@ -182,9 +182,23 @@ export const FailureViewContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 90vh;
-  color: ${props => (props.isDark ? '#fff' : '#000')};
   background-color: ${props => (props.isDark ? ' #0f0f0f' : '#f9f9f9')};
 `
 export const FailureViewImg = styled.img`
   width: 30%;
+`
+
+export const FailureViewText = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 500;
+`
+
+export const FailureViewDescription = styled.p`
+  color: #475569;
+  font-family: . 'roboto';
+  font-weight: 600;
+  margin-top: 1px;
+  text-align: center;
 `

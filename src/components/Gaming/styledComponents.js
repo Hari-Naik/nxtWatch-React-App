@@ -52,14 +52,51 @@ export const SuccessContainer = styled.div`
   width: 100%;
 `
 
+// export const GamingBanner = styled.div`
+//   width: 100%;
+//   height: 150px;
+//   padding: 25px;
+//   background-color: #ebebeb;
+//   @media (min-width: 768px) {
+//     width: 100%;
+//     height: 160px;
+//     padding-left: 15px;
+//   }
+// `
+
+// export const GamingCard = styled.div`
+//   display: flex;
+//   align-items: center;
+//   @media (min-width: 768px) {
+//     margin-left: 85px;
+//   }
+// `
+// export const IconContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 60px;
+//   width: 60px;
+//   margin-right: 12px;
+//   background-color: #cbd5e1;
+//   border-radius: 50%;
+// `
+
+// export const Text = styled.h1`
+//   color: #000;
+//   font-family: 'roboto';
+//   font-size: 22px;
+//   font-weight: 500;
+// `
+
 export const GamingBanner = styled.div`
   width: 100%;
-  height: 150px;
+  height: 175px;
   padding: 25px;
-  background-color: #ebebeb;
+  background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
   @media (min-width: 768px) {
     width: 100%;
-    height: 160px;
+    height: 120px;
     padding-left: 15px;
   }
 `
@@ -78,15 +115,15 @@ export const IconContainer = styled.div`
   height: 60px;
   width: 60px;
   margin-right: 12px;
-  background-color: #cbd5e1;
+  background-color: ${props => (props.isDark ? '#000' : '#cbd5e1')};
   border-radius: 50%;
 `
 
 export const Text = styled.h1`
-  color: #000;
-  font-family: 'roboto';
+  color: ${props => (props.isDark ? '#fff' : '#000')};
+  font-family:"roboto"
   font-size: 22px;
-  font-weight: 500;
+  font-weight:500;
 `
 export const VideosContainer = styled.div`
   display: flex;
@@ -151,4 +188,19 @@ export const Views = styled.p`
   margin-top: 0px;
   margin-bottom: 2px;
   padding-right: 10px;
+`
+
+export const FailureViewText = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 500;
+`
+
+export const FailureViewDescription = styled.p`
+  color: #475569;
+  font-family: . 'roboto';
+  font-weight: 600;
+  margin-top: 1px;
+  text-align: center;
 `

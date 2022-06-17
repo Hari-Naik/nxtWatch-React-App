@@ -64,7 +64,9 @@ const VideoItem = props => (
                   <ViewsContainer isDark={isDark}>
                     <ChannelName>{name}</ChannelName>
                     <ViewsCount>{viewCount} views</ViewsCount>
-                    <PublishedDate>. {publishedDate} ago </PublishedDate>
+                    <PublishedDate>
+                      <strong>.</strong> {publishedDate} ago{' '}
+                    </PublishedDate>
                   </ViewsContainer>
                 </ChannelContent>
               </ChannelContainer>

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const VideoListItem = styled.li`
   list-style-type: none;
-  width: 100%;
+  min-width: 250px;
+  flex: 1;
   height: 270px;
   margin-bottom: ${props => props.propValue && '15px'};
   @media (min-width: 768px) {
@@ -43,15 +44,17 @@ export const ChannelContent = styled.div`
   flex-direction: column;
   margin-left: 12px;
   padding-top: 0px;
-  color: ${props => (props.isDark ? '#ffffff' : '#000000')};
+  color: ${props => (props.isDark ? '#ffffff' : '#1e293b')};
 `
 export const Title = styled.p`
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: ${props => (props.propValue ? '22px' : '13px')};
+  font-weight: 500;
   margin-top: 0px;
   margin-bottom: 2px;
 `
 export const ChannelName = styled.p`
+  color: #64748b;
   font-family: 'roboto';
   font-size: 12px;
   margin-top: 0px;
@@ -59,8 +62,9 @@ export const ChannelName = styled.p`
   display: ${props => props.screen && 'none'};
   @media (min-width: 768px) {
     display: ${props => (props.screen ? 'flex' : 'none')};
+    margin-top: 2px;
     margin-bottom: 4px;
-    font-size: 15px;
+    font-size: 14px;
   }
 `
 
@@ -68,7 +72,7 @@ export const ViewsContainer = styled.div`
   display: flex;
   align-items: center;
   margin: 0px;
-  color: ${props => (props.isDark ? '#ffffff' : 'grey')};
+  color: #64748b;
 `
 export const ViewsCount = styled.p`
   font-family: 'Roboto';

@@ -8,8 +8,7 @@ export const HeaderContainer = styled.nav`
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 8px;
-  background-color: ${props => props.isDark && '#181818'};
+  background-color: ${props => (props.isDark ? '#313131' : '#ffffff')};
 `
 export const WebsiteLogo = styled.img`
   width: 90px;

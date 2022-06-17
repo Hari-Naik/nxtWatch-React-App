@@ -20,6 +20,8 @@ import {
   VideosContainer,
   FailureViewContainer,
   FailureViewImg,
+  FailureViewText,
+  FailureViewDescription,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -82,9 +84,13 @@ class Trending extends Component {
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
         alt="failure view"
       />
-      <h2>Oops! Something Went Wrong</h2>
-      <p>We are having some trouble</p>
-      <p>Please try again.</p>
+      <FailureViewText isDark={isDark}>
+        Oops! Something Went Wrong
+      </FailureViewText>
+      <FailureViewDescription>
+        We are having some trouble to complete your request. <br />
+        Please try again
+      </FailureViewDescription>
       <GetItNowBtn type="button" onClick={this.onClickRetry}>
         Retry
       </GetItNowBtn>

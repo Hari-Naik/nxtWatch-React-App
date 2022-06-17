@@ -25,6 +25,11 @@ import {
   VideosContainer,
   NoSearchResultsContainer,
   NoSearchResultsImg,
+  FailureViewContainer,
+  FailureViewContent,
+  FailureViewImg,
+  FailureViewText,
+  FailureViewDescription,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -132,20 +137,39 @@ class Home extends Component {
   )
 
   renderFailureView = isDark => {
+    const {searchInput} = this.state
     const img = isDark
       ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
       : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
 
     return (
-      <NoSearchResultsContainer isDark={isDark}>
-        <NoSearchResultsImg src={img} alt="failure view" />
-        <h2>Oops! Something Went Wrong</h2>
-        <p>We are having some trouble</p>
-        <p>Please try again.</p>
-        <GetItNowBtn type="button" onClick={this.onClickRetry}>
-          Retry
-        </GetItNowBtn>
-      </NoSearchResultsContainer>
+      <FailureViewContainer isDark={isDark}>
+        <InputContainer>
+          <Input
+            type="search"
+            onChange={this.onChangeSearchInput}
+            value={searchInput}
+          />
+          <SearchButton
+            type="button"
+            data-testid="searchButton"
+            onClick={this.getSearchOutput}
+          >
+            <AiOutlineSearch size={20} color="#fff" />
+          </SearchButton>
+        </InputContainer>
+        <FailureViewContent>
+          <FailureViewImg src={img} alt="failure view" />
+          <FailureViewText>Oops! Something Went Wrong</FailureViewText>
+          <FailureViewDescription>
+            We are having some trouble to complete your request.
+            <br /> Please try again.
+          </FailureViewDescription>
+          <GetItNowBtn type="button" onClick={this.onClickRetry}>
+            Retry
+          </GetItNowBtn>
+        </FailureViewContent>
+      </FailureViewContainer>
     )
   }
 
@@ -155,8 +179,10 @@ class Home extends Component {
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
         alt="no videos"
       />
-      <h2>No Search Results Found</h2>
-      <p>Try different key words or remove search filter</p>
+      <FailureViewText isDark={isDark}>No Search Results Found</FailureViewText>
+      <FailureViewDescription>
+        Try different key words or remove search filter
+      </FailureViewDescription>
       <GetItNowBtn type="button" onClick={this.onClickRetry}>
         Retry
       </GetItNowBtn>

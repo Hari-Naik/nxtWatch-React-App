@@ -26,6 +26,8 @@ import {
   Title,
   Views,
   ViewsContainer,
+  FailureViewText,
+  FailureViewDescription,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -85,9 +87,13 @@ class Gaming extends Component {
     return (
       <FailureViewContainer isDark={isDark}>
         <FailureImg src={img} alt="failure view" />
-        <h2>Oops! Something Went Wrong</h2>
-        <p>We are having some trouble</p>
-        <p>Please try again.</p>
+        <FailureViewText isDark={isDark}>
+          Oops! Something Went Wrong
+        </FailureViewText>
+        <FailureViewDescription>
+          We are having some trouble to complete your request. <br />
+          Please try again.
+        </FailureViewDescription>
         <RetryBtn type="button" onClick={this.onClickRetry}>
           Retry
         </RetryBtn>
@@ -117,12 +123,12 @@ class Gaming extends Component {
 
     return (
       <SuccessContainer>
-        <GamingBanner>
+        <GamingBanner isDark={isDark}>
           <GamingCard>
-            <IconContainer>
+            <IconContainer isDark={isDark}>
               <SiYoutubegaming size={25} color="#ff0437" />
             </IconContainer>
-            <Text>Gaming</Text>
+            <Text isDark={isDark}>Gaming</Text>
           </GamingCard>
         </GamingBanner>
         <VideosContainer isDark={isDark}>

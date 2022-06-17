@@ -138,83 +138,7 @@ export const VideosContainer = styled.ul`
     flex-direction: row;
   }
 `
-export const VideoItem = styled.li`
-  list-style-type: none;
-  width: 100%;
-  height: 270px;
-  margin: auto;
-  color: red;
-  margin-bottom: 25px;
-  @media (min-width: 768px) {
-    min-width: 250px;
-    max-width: 25%;
-    margin: 0px;
-    margin-right: 15px;
-  }
-`
-export const ThumbnailImg = styled.img`
-  width: 100%;
-  margin-bottom: 0px;
-`
-export const ChannelContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin: 0px;
-  color: ${props => props.isDark && '#fff'};
-`
 
-export const ProfileImage = styled.img`
-  width: 30px;
-  margin-top: 4px;
-`
-
-export const ChannelContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 12px;
-  padding-top: 0px;
-`
-export const Title = styled.p`
-  font-family: 'roboto';
-  font-size: 13px;
-  margin-top: 0px;
-  margin-bottom: 2px;
-`
-export const ChannelName = styled.p`
-  font-family: 'roboto';
-  font-size: 12px;
-  margin-top: 0px;
-  margin-right: 12px;
-  display: ${props => props.screen && 'none'};
-  @media (min-width: 768px) {
-    display: ${props => (props.screen ? 'flex' : 'none')};
-    margin-bottom: 4px;
-    font-size: 15px;
-  }
-`
-
-export const ViewsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0px;
-`
-export const ViewsCount = styled.p`
-  font-family: 'Roboto';
-  font-size: 12px;
-  padding-right: 8px;
-  margin-top: 0px;
-  @media (min-width: 768px) {
-    font-size: 14px;
-  }
-`
-export const PublishedDate = styled.p`
-  margin-top: 0px;
-  font-family: 'Roboto';
-  font-size: 12px;
-  @media (min-width: 768px) {
-    font-size: 14px;
-  }
-`
 export const NoSearchResultsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -226,4 +150,37 @@ export const NoSearchResultsContainer = styled.div`
 `
 export const NoSearchResultsImg = styled.img`
   width: 30%;
+`
+
+export const FailureViewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90vh;
+  background-color: ${props => (props.isDark ? ' #0f0f0f' : '#f9f9f9')};
+`
+export const FailureViewImg = styled.img`
+  width: 30%;
+`
+
+export const FailureViewText = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 500;
+`
+
+export const FailureViewDescription = styled.p`
+  color: #475569;
+  font-family: . 'roboto';
+  font-weight: 600;
+  margin-top: 1px;
+  text-align: center;
+`
+export const FailureViewContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
 `
