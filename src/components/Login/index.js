@@ -31,7 +31,7 @@ class Login extends Component {
     history.replace('/')
   }
 
-  onSubmitFailre = errorMsg => {
+  onSubmitFailure = errorMsg => {
     this.setState(prevState => ({
       showErrorMsg: !prevState.showErrorMsg,
       errorMsg,
@@ -53,7 +53,7 @@ class Login extends Component {
     if (response.ok === true) {
       this.onSubmitSuccess(data.jwt_token)
     } else {
-      this.onSubmitFailre(data.error_msg)
+      this.onSubmitFailure(data.error_msg)
     }
   }
 

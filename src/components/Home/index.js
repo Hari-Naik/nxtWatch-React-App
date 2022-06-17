@@ -1,6 +1,4 @@
 import {Component} from 'react'
-// import {Link} from 'react-router-dom'
-// import {formatDistanceToNow} from 'date-fns'
 import Loader from 'react-loader-spinner'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {GrFormClose} from 'react-icons/gr'
@@ -25,8 +23,8 @@ import {
   BannerDescription,
   GetItNowBtn,
   VideosContainer,
-  NoSearchReultsContainer,
-  NoSearchRsultsImg,
+  NoSearchResultsContainer,
+  NoSearchResultsImg,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -56,7 +54,7 @@ class Home extends Component {
     this.setState({searchInput: e.target.value})
   }
 
-  getSearchOuput = () => {
+  getSearchOutput = () => {
     this.getData()
   }
 
@@ -139,21 +137,21 @@ class Home extends Component {
       : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
 
     return (
-      <NoSearchReultsContainer isDark={isDark}>
-        <NoSearchRsultsImg src={img} alt="failure view" />
+      <NoSearchResultsContainer isDark={isDark}>
+        <NoSearchResultsImg src={img} alt="failure view" />
         <h2>Oops! Something Went Wrong</h2>
         <p>We are having some trouble</p>
         <p>Please try again.</p>
         <GetItNowBtn type="button" onClick={this.onClickRetry}>
           Retry
         </GetItNowBtn>
-      </NoSearchReultsContainer>
+      </NoSearchResultsContainer>
     )
   }
 
   renderNoSearchResultsView = isDark => (
-    <NoSearchReultsContainer isDark={isDark}>
-      <NoSearchRsultsImg
+    <NoSearchResultsContainer isDark={isDark}>
+      <NoSearchResultsImg
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
         alt="no videos"
       />
@@ -162,7 +160,7 @@ class Home extends Component {
       <GetItNowBtn type="button" onClick={this.onClickRetry}>
         Retry
       </GetItNowBtn>
-    </NoSearchReultsContainer>
+    </NoSearchResultsContainer>
   )
 
   renderSuccessView = isDark => {
@@ -177,8 +175,9 @@ class Home extends Component {
             value={searchInput}
           />
           <SearchButton
+            type="button"
             data-testid="searchButton"
-            onClick={this.getSearchOuput}
+            onClick={this.getSearchOutput}
           >
             <AiOutlineSearch size={20} color="#fff" />
           </SearchButton>

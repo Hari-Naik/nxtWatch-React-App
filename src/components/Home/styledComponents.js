@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const App = styled.div`
-  background-color: ${props => (props.darkMode ? '#0f0f0f' : '#fff')};
+  background-color: ${props => (props.darkMode ? '#181818' : '#fff')};
 `
 
 export const Banner = styled.div`
@@ -16,7 +16,7 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   height: 90vh;
   width: 100%;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
   @media (min-width: 768px) {
     width: 100%;
   }
@@ -29,7 +29,7 @@ export const VideosListContainer = styled.div`
   width: 100%;
   flex-grow: 1;
   color: ${props => props.darkMode && '#ffffff'};
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
   @media (min-width: 768px) {
     width: 100%;
   }
@@ -215,7 +215,7 @@ export const PublishedDate = styled.p`
     font-size: 14px;
   }
 `
-export const NoSearchReultsContainer = styled.div`
+export const NoSearchResultsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -224,6 +224,6 @@ export const NoSearchReultsContainer = styled.div`
   height: 90vh;
   color: ${props => props.isDark && '#fff'};
 `
-export const NoSearchRsultsImg = styled.img`
+export const NoSearchResultsImg = styled.img`
   width: 30%;
 `

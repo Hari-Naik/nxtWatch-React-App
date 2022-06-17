@@ -32,12 +32,15 @@ const VideoItem = props => (
         viewCount,
       } = eachItem
 
-      const publisedTime = formatDistanceToNow(new Date(publishedAt)).split(' ')
+      const publishedTime = formatDistanceToNow(new Date(publishedAt)).split(
+        ' ',
+      )
+
       let publishedDate
-      if (publisedTime.length === 2) {
-        publishedDate = publisedTime[0] + publisedTime[1]
+      if (publishedTime.length === 2) {
+        publishedDate = publishedTime[0] + publishedTime[1]
       } else {
-        publishedDate = publisedTime[1] + publisedTime[2]
+        publishedDate = publishedTime[1] + publishedTime[2]
       }
 
       return (

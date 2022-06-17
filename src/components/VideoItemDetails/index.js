@@ -49,7 +49,6 @@ class VideoItemDetails extends Component {
   state = {
     data: {},
     apiStatus: apiStatusConstants.initial,
-    isSaved: false,
     isLiked: false,
     isDisLiked: false,
   }
@@ -108,11 +107,10 @@ class VideoItemDetails extends Component {
   renderSuccessView = () => (
     <Context.Consumer>
       {value => {
-        const {saveAndRemoveVideos, isDark} = value
-        const {data, isSaved, isLiked, isDisLiked} = this.state
+        const {saveAndRemoveVideos, isDark, activeSavedVideosIds} = value
+        const {data, isLiked, isDisLiked} = this.state
 
         const onClickSaveAndRemoveVideos = () => {
-          this.setState(prevState => ({isSaved: !prevState.isSaved}))
           saveAndRemoveVideos(data)
         }
 
@@ -141,21 +139,22 @@ class VideoItemDetails extends Component {
           description,
         } = data
 
-        const publisedTime = formatDistanceToNow(new Date(publishedAt)).split(
+        const publishedTime = formatDistanceToNow(new Date(publishedAt)).split(
           ' ',
         )
         let publishedDate
-        if (publisedTime.length === 2) {
-          publishedDate = publisedTime[0] + publisedTime[1]
+        if (publishedTime.length === 2) {
+          publishedDate = publishedTime[0] + publishedTime[1]
         } else {
-          publishedDate = publisedTime[1] + publisedTime[2]
+          publishedDate = publishedTime[1] + publishedTime[2]
         }
 
+        const isActive = activeSavedVideosIds.some(
+          activeId => activeId === data.id,
+        )
+
         return (
-          <VideoItemDetailsContainer
-            data-testid="videoItemDetails"
-            isDark={isDark}
-          >
+          <VideoItemDetailsContainer isDark={isDark}>
             <ResponsiveContainer>
               <VideoContainer>
                 <ReactPlayer url={videoUrl} width="100%" controls />
@@ -186,11 +185,11 @@ class VideoItemDetails extends Component {
                   <SaveButton
                     type="button"
                     onClick={onClickSaveAndRemoveVideos}
-                    isSaved={isSaved}
+                    isSaved={isActive}
                     id={data.id}
                   >
                     <BiListPlus size={22} />
-                    <ButtonText>{isSaved ? 'saved' : 'save'}</ButtonText>
+                    <ButtonText>{isActive ? 'saved' : 'save'}</ButtonText>
                   </SaveButton>
                 </LikesContainer>
               </ViewsAndLikesContainer>
@@ -235,7 +234,7 @@ class VideoItemDetails extends Component {
     </LoaderContainer>
   )
 
-  renderview = isDark => {
+  renderView = isDark => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
@@ -255,11 +254,11 @@ class VideoItemDetails extends Component {
         {value => {
           const {isDark} = value
           return (
-            <AppContainer isDark={isDark}>
+            <AppContainer isDark={isDark} data-testid="videoItemDetails">
               <Header />
               <Banner>
                 <SideBar />
-                {this.renderview(isDark)}
+                {this.renderView(isDark)}
               </Banner>
             </AppContainer>
           )

@@ -123,7 +123,7 @@ export const PublishedDate = styled.p`
     font-size: 14px;
   }
 `
-export const NoSearchReultsContainer = styled.div`
+export const FailureViewContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,7 +132,7 @@ export const NoSearchReultsContainer = styled.div`
   color:${props => props.darkMode && '#fff'}
   background-color: ${props => (props.darkMode ? '#f9f9f9' : '#0f0f0f')};
 `
-export const NoSearchRsultsImg = styled.img`
+export const FailureViewImg = styled.img`
   width: 30%;
 `
 export const TrendingBanner = styled.div`

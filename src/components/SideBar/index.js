@@ -29,6 +29,8 @@ const SideBar = () => (
         onActiveTabId(e.target.innerHTML)
       }
 
+      const color = isDark ? '#fff' : '#313131'
+
       return (
         <SidebarContainer isDark={isDark}>
           <div>
@@ -39,7 +41,10 @@ const SideBar = () => (
                 activeTabId={activeTabId}
                 isDark={isDark}
               >
-                <AiFillHome size={18} color={isDark ? '#fff' : '#313131'} />
+                <AiFillHome
+                  size={18}
+                  color={activeTabId === 'Home' ? '#ff0000' : `${color}`}
+                />
                 <MenuText dark={isDark}>Home</MenuText>
               </HomeCard>
             </Link>
@@ -50,7 +55,10 @@ const SideBar = () => (
                 activeTabId={activeTabId}
                 isDark={isDark}
               >
-                <MdWhatshot size={18} color={isDark ? '#fff' : '#313131'} />
+                <MdWhatshot
+                  size={18}
+                  color={activeTabId === 'Trending' ? '#ff0000' : `${color}`}
+                />
                 <MenuText dark={isDark}>Trending</MenuText>
               </TrendingCard>
             </Link>
@@ -63,7 +71,7 @@ const SideBar = () => (
               >
                 <SiYoutubegaming
                   size={18}
-                  color={isDark ? '#fff' : '#313131'}
+                  color={activeTabId === 'Gaming' ? '#ff0000' : `${color}`}
                 />
                 <MenuText dark={isDark}>Gaming</MenuText>
               </GamingCard>
@@ -75,7 +83,12 @@ const SideBar = () => (
                 activeTabId={activeTabId}
                 isDark={isDark}
               >
-                <BiListPlus size={22} color={isDark ? '#fff' : '#313131'} />
+                <BiListPlus
+                  size={22}
+                  color={
+                    activeTabId === 'Saved Videos' ? '#ff0000' : `${color}`
+                  }
+                />
                 <MenuText dark={isDark} activeTabId={activeTabId}>
                   Saved Videos
                 </MenuText>

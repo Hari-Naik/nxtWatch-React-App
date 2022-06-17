@@ -15,6 +15,7 @@ import './App.css'
 class App extends Component {
   state = {
     savedVideosList: [],
+    activeSavedVideosIds: [],
     isDark: false,
     activeTabId: 'initial',
   }
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
   saveAndRemoveVideos = videoData => {
-    const {savedVideosList} = this.state
+    const {savedVideosList, activeSavedVideosIds} = this.state
 
     const videoObj = savedVideosList.some(
       eachItem => eachItem.id === videoData.id,
@@ -33,9 +34,18 @@ class App extends Component {
       const filteredRes = savedVideosList.filter(
         each => each.id !== videoData.id,
       )
-      this.setState({savedVideosList: filteredRes})
+      const filterdIds = activeSavedVideosIds.filter(
+        eachId => eachId !== videoData.id,
+      )
+      this.setState({
+        savedVideosList: filteredRes,
+        activeSavedVideosIds: filterdIds,
+      })
     } else {
-      this.setState({savedVideosList: [...savedVideosList, videoData]})
+      this.setState({
+        savedVideosList: [...savedVideosList, videoData],
+        activeSavedVideosIds: [...activeSavedVideosIds, videoData.id],
+      })
     }
   }
 
@@ -44,13 +54,19 @@ class App extends Component {
   }
 
   render() {
-    const {savedVideosList, isDark, activeTabId} = this.state
+    const {
+      savedVideosList,
+      isDark,
+      activeSavedVideosIds,
+      activeTabId,
+    } = this.state
     return (
       <Context.Provider
         value={{
           isDark,
           savedVideosList,
           activeTabId,
+          activeSavedVideosIds,
           onToggleTheme: this.onToggleTheme,
           saveAndRemoveVideos: this.saveAndRemoveVideos,
           onActiveTabId: this.onActiveTabId,

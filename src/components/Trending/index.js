@@ -104,7 +104,7 @@ class Trending extends Component {
   }
 
   renderSuccessView = isDark => (
-    <VideosListContainer isDark={isDark}>
+    <VideosListContainer data-testid="trending" isDark={isDark}>
       <TrendingBanner isDark={isDark}>
         <TrendingCard>
           <IconContainer isDark={isDark}>

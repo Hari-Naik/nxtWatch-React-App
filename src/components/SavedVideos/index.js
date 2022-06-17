@@ -13,8 +13,8 @@ import {
   Text,
   VideosListContainer,
   VideosContainer,
-  NoSearchReultsContainer,
-  NoSearchRsultsImg,
+  FailureViewContainer,
+  FailureViewImg,
 } from './styledComponents'
 
 const SavedVideos = () => (
@@ -89,14 +89,14 @@ const SavedVideos = () => (
       )
 
       const renderNoVideosView = () => (
-        <NoSearchReultsContainer>
-          <NoSearchRsultsImg
+        <FailureViewContainer>
+          <FailureViewImg
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
             alt="no saved videos"
           />
           <h2>No Saved Videos Found</h2>
           <p>You can save your videos while watching them</p>
-        </NoSearchReultsContainer>
+        </FailureViewContainer>
       )
 
       return (
