@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 export const SidebarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: none;
   justify-content: space-between;
-  height: 90vh;
-  width: 35vh;
+  flex-direction: column;
+  min-height: 90vh;
+  //   max-height: 100vh;
   padding-top: 25px;
   background-color: ${props => (props.isDark ? '#313131' : '#ffffff')};
-  @media (max-width: 592px) {
-    display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    width: 35vh;
   }
 `
 // export const MenuItem = styled.Link`
@@ -17,61 +18,36 @@ export const SidebarContainer = styled.div`
 
 // `
 
-export const HomeCard = styled.div`
+export const MenuCard = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 98%;
-  padding-left: 15px;
-  padding-top: 2px;
   padding-bottom: 2px;
+  margin-bottom: 8px;
   background-color: ${props =>
-    props.isDark
-      ? props.activeTabId === 'Home' && ' #606060'
-      : props.activeTabId === 'Home' && '#e2e8f0'};
+    props.isDark ? props.isActive && ' #606060' : props.isActive && '#e2e8f0'};
+  @media (min-width: 592px) {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0px;
+    padding-left: 15px;
+    padding-top: 2px;
+  }
 `
-export const TrendingCard = styled.div`
-  display: flex;
-  align-items: center;
-  width: 98%;
-  padding-left: 15px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-color: ${props =>
-    props.isDark
-      ? props.activeTabId === 'Trending' && ' #606060'
-      : props.activeTabId === 'Trending' && '#e2e8f0'};
-`
-export const GamingCard = styled.div`
-  display: flex;
-  align-items: center;
-  width: 98%;
-  padding-left: 15px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-color: ${props =>
-    props.isDark
-      ? props.activeTabId === 'Gaming' && ' #606060'
-      : props.activeTabId === 'Gaming' && '#e2e8f0'};
-`
-export const SavedVideosCard = styled.div`
-  display: flex;
-  align-items: center;
-  width: 98%;
-  padding-left: 15px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-color: ${props =>
-    props.isDark
-      ? props.activeTabId === 'Saved Videos' && ' #606060'
-      : props.activeTabId === 'Saved Videos' && '#e2e8f0'};
-`
+
 export const MenuText = styled.h1`
   color: ${props => (props.dark ? '#fff' : '#313131')};
-  font-family: 'roboto';
-  font-size: 15px;
-  font-weight: 500;
-  margin-left: 15px;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: ${props => (props.isActive ? '800' : '500')};
   text-decoration: none;
+  padding-left: 15px;
+  @media (max-width: 592px) {
+    padding-left: 0px;
+    margin-left: 15px;
+    font-size: 15px;
+  }
 `
 
 export const ContactusSection = styled.div`
@@ -79,6 +55,9 @@ export const ContactusSection = styled.div`
   flex-direction: column;
   margin-bottom: 25px;
   margin-left: 15px;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `
 export const ContactusText = styled.p`
   color: ${props => (props.dark ? '#fff' : '#1e293b')};

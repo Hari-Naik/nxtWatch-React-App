@@ -7,10 +7,7 @@ import Context from '../../context/Context'
 
 import {
   SidebarContainer,
-  HomeCard,
-  TrendingCard,
-  GamingCard,
-  SavedVideosCard,
+  MenuCard,
   MenuText,
   ContactusSection,
   ContactusText,
@@ -29,70 +26,79 @@ const SideBar = () => (
         onActiveTabId(e.target.innerHTML)
       }
 
-      const color = isDark ? '#fff' : '#313131'
+      const colorValue = isDark ? '#fff' : '#313131'
 
       return (
         <SidebarContainer isDark={isDark}>
           <div>
             <Link to="/">
-              <HomeCard
+              <MenuCard
                 id="Home"
                 onClick={onClickActiveTabId}
-                activeTabId={activeTabId}
+                isActive={activeTabId === 'Home'}
                 isDark={isDark}
               >
                 <AiFillHome
-                  size={18}
-                  color={activeTabId === 'Home' ? '#ff0000' : `${color}`}
+                  size={20}
+                  color={activeTabId === 'Home' ? '#ff0000' : colorValue}
                 />
-                <MenuText dark={isDark}>Home</MenuText>
-              </HomeCard>
+                <MenuText dark={isDark} isActive={activeTabId === 'Home'}>
+                  Home
+                </MenuText>
+              </MenuCard>
             </Link>
             <Link to="trending">
-              <TrendingCard
+              <MenuCard
                 id="Trending"
                 onClick={onClickActiveTabId}
-                activeTabId={activeTabId}
+                isActive={activeTabId === 'Trending'}
                 isDark={isDark}
               >
                 <MdWhatshot
-                  size={18}
-                  color={activeTabId === 'Trending' ? '#ff0000' : `${color}`}
+                  size={20}
+                  color={activeTabId === 'Trending' ? '#ff0000' : colorValue}
                 />
-                <MenuText dark={isDark}>Trending</MenuText>
-              </TrendingCard>
+                <MenuText dark={isDark} isActive={activeTabId === 'Trending'}>
+                  Trending
+                </MenuText>
+              </MenuCard>
             </Link>
             <Link to="/gaming">
-              <GamingCard
+              <MenuCard
                 id="Gaming"
                 onClick={onClickActiveTabId}
-                activeTabId={activeTabId}
+                isActive={activeTabId === 'Gaming'}
                 isDark={isDark}
               >
                 <SiYoutubegaming
-                  size={18}
-                  color={activeTabId === 'Gaming' ? '#ff0000' : `${color}`}
+                  size={20}
+                  color={activeTabId === 'Gaming' ? '#ff0000' : colorValue}
                 />
-                <MenuText dark={isDark}>Gaming</MenuText>
-              </GamingCard>
+                <MenuText dark={isDark} isActive={activeTabId === 'Gaming'}>
+                  Gaming
+                </MenuText>
+              </MenuCard>
             </Link>
             <Link to="/saved-videos">
-              <SavedVideosCard
+              <MenuCard
                 id="savedVideos"
                 onClick={onClickActiveTabId}
-                activeTabId={activeTabId}
+                isActive={activeTabId === 'Saved Videos'}
                 isDark={isDark}
               >
                 <BiListPlus
-                  size={22}
+                  size={24}
                   color={
-                    activeTabId === 'Saved Videos' ? '#ff0000' : `${color}`
+                    activeTabId === 'Saved Videos' ? '#ff0000' : colorValue
                   }
                 />
-                <MenuText dark={isDark} activeTabId={activeTabId}>
+                <MenuText
+                  dark={isDark}
+                  isActive={activeTabId === 'Saved Videos'}
+                >
                   Saved Videos
                 </MenuText>
-              </SavedVideosCard>
+              </MenuCard>
             </Link>
           </div>
           <ContactusSection>

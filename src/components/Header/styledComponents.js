@@ -15,14 +15,16 @@ export const WebsiteLogo = styled.img`
 `
 export const NavRightMobile = styled.ul`
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `
 
 export const Li = styled.li`
   list-style-type: none;
+  padding-right: 12px;
 `
 export const Button = styled.button`
   outline: none;
@@ -47,12 +49,18 @@ export const ModalContainer = styled.div`
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#fff')};
   margin: auto;
 `
-export const ModalContainerText = styled.p`
-  color: #00306e;
+export const ModalContainerText = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#00306e')};
   font-family: 'roboto';
   font-size: 18px;
   font-weight: 500;
   text-align: center;
+`
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ModalButton = styled.button`
@@ -60,9 +68,10 @@ export const ModalButton = styled.button`
   width: 90px;
   margin-top: 15px;
   margin-right: 15px;
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
   color: ${props => (props.outline ? '#475569' : '#fff')};
   border: ${props => (props.outline ? '1px solid #475569' : 'none')};
   background-color: ${props => (props.outline ? 'transparent' : '#3b82f6')};
@@ -73,7 +82,7 @@ export const NavRightScreen = styled.ul`
   justify-content: flex-start;
   align-items: center;
   color: ${props => props.isDark && '#ffffff'};
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 `

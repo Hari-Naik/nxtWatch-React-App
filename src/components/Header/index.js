@@ -16,6 +16,7 @@ import {
   PopupContainer,
   ModalContainer,
   ModalContainerText,
+  ButtonsContainer,
   ModalButton,
   NavRightScreen,
   ProfileImage,
@@ -53,7 +54,7 @@ const Header = props => (
               </Button>
             </Li>
             <Li>
-              <GiHamburgerMenu size={17} />
+              <GiHamburgerMenu size={17} color={isDark ? '#fff' : '#000'} />
             </Li>
             <PopupContainer>
               <Popup
@@ -70,12 +71,14 @@ const Header = props => (
                   <ModalContainer isDark={isDark}>
                     <ModalContainerText>
                       Are you sure, you want to logout
-                      <ModalButton outline onClick={() => close()}>
-                        Cancel
-                      </ModalButton>
-                      <ModalButton type="button" onClick={onConfirmLogout}>
-                        Confirm
-                      </ModalButton>
+                      <ButtonsContainer>
+                        <ModalButton outline onClick={() => close()}>
+                          Cancel
+                        </ModalButton>
+                        <ModalButton type="button" onClick={onConfirmLogout}>
+                          Confirm
+                        </ModalButton>
+                      </ButtonsContainer>
                     </ModalContainerText>
                   </ModalContainer>
                 )}
@@ -110,8 +113,8 @@ const Header = props => (
                 }
               >
                 {close => (
-                  <ModalContainer>
-                    <ModalContainerText>
+                  <ModalContainer isDark={isDark}>
+                    <ModalContainerText isDark={isDark}>
                       Are you sure, you want to logout
                       <div>
                         <ModalButton outline onClick={() => close()}>

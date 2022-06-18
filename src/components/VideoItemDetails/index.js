@@ -17,6 +17,8 @@ import {
   LoaderContainer,
   FailureViewContainer,
   FailureImg,
+  FailureViewText,
+  FailureViewDescription,
   RetryBtn,
   VideoItemDetailsContainer,
   ResponsiveContainer,
@@ -159,11 +161,11 @@ class VideoItemDetails extends Component {
               <VideoContainer>
                 <ReactPlayer url={videoUrl} width="100%" controls />
               </VideoContainer>
-              <Title>{title}</Title>
+              <Title isDark={isDark}>{title}</Title>
               <ViewsAndLikesContainer>
                 <ViewsContainer>
-                  <Views>{viewCount} Views</Views>
-                  <Views>. {publishedDate} ago</Views>
+                  <Views isDark={isDark}>{viewCount} Views</Views>
+                  <Views isDark={isDark}>. {publishedDate} ago</Views>
                 </ViewsContainer>
                 <LikesContainer>
                   <LikeButton
@@ -193,15 +195,17 @@ class VideoItemDetails extends Component {
                   </SaveButton>
                 </LikesContainer>
               </ViewsAndLikesContainer>
-              <hr color="#000" width="100%" />
+              <hr color={isDark ? '#fff' : '#000'} width="100%" />
               <ChannelProfileContainer>
                 <Image src={profileImgUrl} alt="channel logo" />
                 <ChannelContent>
-                  <ChannelName>{channelName}</ChannelName>
-                  <Subscribers>{subscriberCount} subscribers</Subscribers>
+                  <ChannelName isDark={isDark}>{channelName}</ChannelName>
+                  <Subscribers isDark={isDark}>
+                    {subscriberCount} subscribers
+                  </Subscribers>
                 </ChannelContent>
               </ChannelProfileContainer>
-              <Description>{description}</Description>
+              <Description isDark={isDark}>{description}</Description>
             </ResponsiveContainer>
           </VideoItemDetailsContainer>
         )
@@ -217,10 +221,10 @@ class VideoItemDetails extends Component {
     return (
       <FailureViewContainer isDark={isDark}>
         <FailureImg src={img} alt="failure view" />
-        <h2>Oops! Something Went Wrong</h2>
-        <p>
+        <FailureViewText>Oops! Something Went Wrong</FailureViewText>
+        <FailureViewDescription>
           We are having some trouble to complete your request. Please try again.
-        </p>
+        </FailureViewDescription>
         <RetryBtn type="button" onClick={this.onClickRetry}>
           Retry
         </RetryBtn>

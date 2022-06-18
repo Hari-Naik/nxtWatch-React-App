@@ -9,8 +9,6 @@ export const Banner = styled.div`
   display: flex;
   align-items: center;
   height: 90vh;
-  padding-bottom: 25px;
-  overflow-y: scroll;
 `
 
 export const LoaderContainer = styled.div`
@@ -34,6 +32,20 @@ export const FailureViewContainer = styled.div`
 export const FailureImg = styled.img`
   width: 30%;
 `
+export const FailureViewText = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 500;
+`
+
+export const FailureViewDescription = styled.p`
+  color: #475569;
+  font-family: . 'Roboto';
+  font-weight: 600;
+  margin-top: 1px;
+  text-align: center;
+`
 
 export const RetryBtn = styled.button`
   height: 32px;
@@ -48,24 +60,24 @@ export const VideoItemDetailsContainer = styled.div`
   width: 100%;
   height: 90vh;
   padding-top: 25px;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
-  @media (min-width: 768px) {
-    padding-left: 75px;
-  }
+//   overflow-y: scroll;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};s
 `
 export const ResponsiveContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
-  margin: auto;
-  padding-bottom: 25px;
+  margin-left: auto;
+  margin-right: 25px;
+  //   padding-bottom: 25px;
 `
 export const Title = styled.p`
-  color: #475569;
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;
+  margin-bottom: 0px;
 `
 export const ViewsAndLikesContainer = styled.div`
   display: flex;
@@ -92,8 +104,9 @@ export const LikesContainer = styled.div`
   align-items: center;
 `
 export const Views = styled.p`
-  color: #909090;
-  font-family: 'roboto';
+  color: ${props => (props.isDark ? '#d7dfe9' : '#909090')};
+  opacity: ${props => props.isDark && '0.5'};
+  font-family: 'Roboto';
   font-size: 14px;
   padding-right: 12px;
 `
@@ -125,7 +138,7 @@ export const DisLikeButton = styled.button`
   background-color: transparent;
 `
 export const ButtonText = styled.p`
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 15px;
   padding-left: 8px;
 `
@@ -135,8 +148,8 @@ export const ChannelProfileContainer = styled.div`
   align-items: flex-start;
 `
 export const Image = styled.img`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
 `
 
@@ -148,18 +161,29 @@ export const ChannelContent = styled.div`
   padding-top: 0px;
   margin-left: 15px;
 `
-export const ChannelName = styled.h3`
+export const ChannelName = styled.h1`
+  color: ${props => (props.isDark ? '#fff' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
   margin-top: 0px;
   margin-bottom: 2px;
 `
 export const Subscribers = styled.p`
+  color: ${props => (props.isDark ? '#d7dfe9' : '#909090')};
+  opacity: ${props => props.isDark && '0.5'};
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 400;
   margin-top: 0px;
 `
 
 export const Description = styled.p`
-  color: gray;
-  font-family: 'roboto';
-  font-size: 16px;
+  color: ${props => (props.isDark ? '#fff' : '#64748b')};
+  font-family: 'Roboto';
+  font-size: 14px;
   @media (min-width: 768px) {
     padding-left: 55px;
   }

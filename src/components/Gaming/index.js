@@ -1,10 +1,10 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import {SiYoutubegaming} from 'react-icons/si'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import GamingVideoItem from '../GamingVideoItem'
 import Context from '../../context/Context'
 
 import {
@@ -21,11 +21,6 @@ import {
   Text,
   VideosContainer,
   VideoContainer,
-  VideoItem,
-  Image,
-  Title,
-  Views,
-  ViewsContainer,
   FailureViewText,
   FailureViewDescription,
 } from './styledComponents'
@@ -101,22 +96,22 @@ class Gaming extends Component {
     )
   }
 
-  renderVideoItem = (eachData, isDark) => {
-    const {id, thumbnailUrl, title, viewCount} = eachData
+  //   renderVideoItem = (eachData, isDark) => {
+  //     const {id, thumbnailUrl, title, viewCount} = eachData
 
-    return (
-      <Link to={`videos/${id}`}>
-        <VideoItem key={id}>
-          <Image src={thumbnailUrl} alt="video thumbnail" />
-          <Title isDark={isDark}>{title}</Title>
-          <ViewsContainer isDark={isDark}>
-            <Views>{viewCount} Watching</Views>
-            <Views>Worldwide</Views>
-          </ViewsContainer>
-        </VideoItem>
-      </Link>
-    )
-  }
+  //     return (
+  //       <Link to={`videos/${id}`}>
+  //         <VideoItem key={id}>
+  //           <Image src={thumbnailUrl} alt="video thumbnail" />
+  //           <Title isDark={isDark}>{title}</Title>
+  //           <ViewsContainer isDark={isDark}>
+  //             <Views>{viewCount} Watching</Views>
+  //             <Views>Worldwide</Views>
+  //           </ViewsContainer>
+  //         </VideoItem>
+  //       </Link>
+  //     )
+  //   }
 
   renderSuccessView = isDark => {
     const {data} = this.state
@@ -133,7 +128,9 @@ class Gaming extends Component {
         </GamingBanner>
         <VideosContainer isDark={isDark}>
           <VideoContainer>
-            {data.map(eachData => this.renderVideoItem(eachData, isDark))}
+            {data.map(eachData => (
+              <GamingVideoItem key={eachData.id} eachItem={eachData} />
+            ))}
           </VideoContainer>
         </VideosContainer>
       </SuccessContainer>

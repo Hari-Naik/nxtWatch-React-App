@@ -105,6 +105,7 @@ class Login extends Component {
                   </Label>
                   <>
                     <Input
+                      darkMode={isDark}
                       id="username"
                       type="text"
                       placeholder="username"
@@ -118,6 +119,7 @@ class Login extends Component {
                   </Label>
                   <>
                     <Input
+                      darkMode={isDark}
                       id="password"
                       type={inputType}
                       placeholder="password"

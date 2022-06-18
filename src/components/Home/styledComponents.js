@@ -14,7 +14,7 @@ export const LoaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  min-height: 90vh;
   width: 100%;
   background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
   @media (min-width: 768px) {

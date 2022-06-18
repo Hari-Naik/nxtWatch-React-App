@@ -68,7 +68,6 @@ class Trending extends Component {
     if (response.ok === true) {
       const fetchedData = await response.json()
       const formattedData = this.formatData(fetchedData.videos)
-      //   console.log(formattedData)
       this.setState({
         data: formattedData,
         apiStatus: apiStatusConstants.success,
