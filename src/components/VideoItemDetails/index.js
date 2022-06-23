@@ -65,9 +65,10 @@ class VideoItemDetails extends Component {
 
   formatData = data => {
     const formattedData = {
-      channelName: data.channel.name,
-      profileImgUrl: data.channel.profile_image_url,
-      subscriberCount: data.channel.subscriber_count,
+      channel: data.channel,
+      //   name: data.channel.name,
+      //   profileImgUrl: data.channel.profile_image_url,
+      //   subscriberCount: data.channel.subscriber_count,
       id: data.id,
       thumbnailUrl: data.thumbnail_url,
       title: data.title,
@@ -96,6 +97,7 @@ class VideoItemDetails extends Component {
 
     if (response.ok === true) {
       const fetchedData = await response.json()
+      console.log(fetchedData)
       const formattedData = this.formatData(fetchedData.video_details)
       this.setState({
         data: formattedData,
@@ -131,13 +133,13 @@ class VideoItemDetails extends Component {
         }
 
         const {
+          channel,
           videoUrl,
           title,
           viewCount,
           publishedAt,
-          profileImgUrl,
-          channelName,
-          subscriberCount,
+          /* profileImgUrl,
+          subscriberCount, */
           description,
         } = data
 
@@ -197,11 +199,11 @@ class VideoItemDetails extends Component {
               </ViewsAndLikesContainer>
               <hr color={isDark ? '#fff' : '#000'} width="100%" />
               <ChannelProfileContainer>
-                <Image src={profileImgUrl} alt="channel logo" />
+                <Image src={channel.profile_image_url} alt="channel logo" />
                 <ChannelContent>
-                  <ChannelName isDark={isDark}>{channelName}</ChannelName>
+                  <ChannelName isDark={isDark}>{channel.name}</ChannelName>
                   <Subscribers isDark={isDark}>
-                    {subscriberCount} subscribers
+                    {channel.subscriber_count} subscribers
                   </Subscribers>
                 </ChannelContent>
               </ChannelProfileContainer>
@@ -221,9 +223,12 @@ class VideoItemDetails extends Component {
     return (
       <FailureViewContainer isDark={isDark}>
         <FailureImg src={img} alt="failure view" />
-        <FailureViewText>Oops! Something Went Wrong</FailureViewText>
+        <FailureViewText isDark={isDark}>
+          Oops! Something Went Wrong
+        </FailureViewText>
         <FailureViewDescription>
-          We are having some trouble to complete your request. Please try again.
+          We are having some trouble to complete your request. <br />
+          Please try again.
         </FailureViewDescription>
         <RetryBtn type="button" onClick={this.onClickRetry}>
           Retry

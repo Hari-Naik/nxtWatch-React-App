@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
 export const App = styled.div`
-  background-color: ${props => (props.darkMode ? '#181818' : '#fff')};
+  background-color: ${props => (props.darkMode ? '#181818' : '#f9f9f9')};
 `
 
 export const Banner = styled.div`
   display: flex;
   align-items: center;
   min-height: 90vh;
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
 `
 export const LoaderContainer = styled.div`
   display: flex;
@@ -16,10 +15,6 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   min-height: 90vh;
   width: 100%;
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 `
 export const VideosListContainer = styled.div`
   display: flex;
@@ -29,10 +24,6 @@ export const VideosListContainer = styled.div`
   width: 100%;
   flex-grow: 1;
   color: ${props => props.darkMode && '#ffffff'};
-  background-color: ${props => (props.isDark ? '#181818' : '#f9f9f9')};
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 `
 
 export const InputContainer = styled.div`
@@ -79,7 +70,7 @@ export const SearchButton = styled.button`
     padding: 0px;
   }
 `
-export const BannerImageContainer = styled.div`
+export const BannerContainer = styled.div`
   width: 100%;
   height: 175px;
   padding: 25px;
@@ -109,7 +100,7 @@ export const WebsiteLogo = styled.img`
 `
 
 export const BannerDescription = styled.p`
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 16px;
 `
 export const GetItNowBtn = styled.button`
@@ -147,6 +138,8 @@ export const NoSearchResultsContainer = styled.div`
   width: 100%;
   height: 90vh;
   color: ${props => props.isDark && '#fff'};
+  padding-bottom: 25px;
+  padding-top: 25px;
 `
 export const NoSearchResultsImg = styled.img`
   width: 30%;
@@ -157,7 +150,6 @@ export const FailureViewContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 90vh;
-  background-color: ${props => (props.isDark ? ' #0f0f0f' : '#f9f9f9')};
 `
 export const FailureViewImg = styled.img`
   width: 30%;

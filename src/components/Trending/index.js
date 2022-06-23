@@ -44,7 +44,7 @@ class Trending extends Component {
 
   formatData = data => {
     const formattedData = data.map(eachData => ({
-      channelName: eachData.channel.name,
+      channel: eachData.channel,
       id: eachData.id,
       thumbnailUrl: eachData.thumbnail_url,
       title: eachData.title,
@@ -109,7 +109,7 @@ class Trending extends Component {
   }
 
   renderSuccessView = isDark => (
-    <VideosListContainer data-testid="trending" isDark={isDark}>
+    <VideosListContainer>
       <TrendingBanner isDark={isDark}>
         <TrendingCard>
           <IconContainer isDark={isDark}>
@@ -151,7 +151,7 @@ class Trending extends Component {
           return (
             <App data-testid="trending" darkMode={isDark}>
               <Header />
-              <Banner>
+              <Banner data-testid="banner">
                 <SideBar />
                 {this.renderTrending(isDark)}
               </Banner>

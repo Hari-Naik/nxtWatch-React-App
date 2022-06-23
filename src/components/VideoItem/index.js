@@ -24,10 +24,9 @@ const VideoItem = props => (
       const {eachItem, notHome} = props
       const {
         id,
+        channel,
         thumbnailUrl,
         title,
-        name,
-        profileImgUrl,
         publishedAt,
         viewCount,
       } = eachItem
@@ -54,18 +53,18 @@ const VideoItem = props => (
               />
               <ChannelContainer propValue={notHome}>
                 <ProfileImage
-                  src={profileImgUrl}
+                  src={channel.profile_image_url}
                   alt="channel logo"
                   propValue={notHome}
                 />
                 <ChannelContent isDark={isDark}>
                   <Title propValue={notHome}>{title}</Title>
-                  <ChannelName screen>{name}</ChannelName>
+                  <ChannelName screen>{channel.name}</ChannelName>
                   <ViewsContainer isDark={isDark}>
-                    <ChannelName>{name}</ChannelName>
+                    <ChannelName>{channel.name}</ChannelName>
                     <ViewsCount>{viewCount} views</ViewsCount>
                     <PublishedDate>
-                      <strong>.</strong> {publishedDate} ago{' '}
+                      <strong>.</strong> {publishedDate} ago
                     </PublishedDate>
                   </ViewsContainer>
                 </ChannelContent>

@@ -16,7 +16,7 @@ import {
   Input,
   SearchButton,
   InputContainer,
-  BannerImageContainer,
+  BannerContainer,
   LogoCloseIconContainer,
   CloseButton,
   WebsiteLogo,
@@ -69,8 +69,8 @@ class Home extends Component {
 
   formatData = data => {
     const formattedData = data.map(eachData => ({
-      name: eachData.channel.name,
-      profileImgUrl: eachData.channel.profile_image_url,
+      channel: eachData.channel,
+      //   profileImgUrl: eachData.channel.profile_image_url,
       id: eachData.id,
       thumbnailUrl: eachData.thumbnail_url,
       title: eachData.title,
@@ -117,23 +117,25 @@ class Home extends Component {
   }
 
   renderBannerImg = () => (
-    <BannerImageContainer data-testid="banner">
+    <BannerContainer data-testid="banner">
       <LogoCloseIconContainer>
         <WebsiteLogo
           src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
           alt="nxt watch  logo"
         />
-        <CloseButton type="button" data-testid="close">
-          <GrFormClose size={20} onClick={this.onClickCloseButton} />
+        <CloseButton
+          type="button"
+          data-testid="close"
+          onClick={this.onClickCloseButton}
+        >
+          <GrFormClose size={20} />
         </CloseButton>
       </LogoCloseIconContainer>
-      <BannerDescription>
-        Buy Nxt Watch Premium prepaid plans with UPI
-      </BannerDescription>
+      <BannerDescription>Buy Nxt Watch Premium</BannerDescription>
       <GetItNowBtn type="button" outline>
         GET IT NOW
       </GetItNowBtn>
-    </BannerImageContainer>
+    </BannerContainer>
   )
 
   renderFailureView = isDark => {
@@ -215,8 +217,8 @@ class Home extends Component {
     )
   }
 
-  renderLoadingView = isDark => (
-    <LoaderContainer isDark={isDark} data-testid="loader">
+  renderLoadingView = () => (
+    <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#4f46e5" height="50" width="50" />
     </LoaderContainer>
   )
@@ -230,7 +232,7 @@ class Home extends Component {
       case apiStatusConstants.failure:
         return this.renderFailureView(isDark)
       case apiStatusConstants.inProgress:
-        return this.renderLoadingView(isDark)
+        return this.renderLoadingView()
       default:
         return null
     }
@@ -243,9 +245,9 @@ class Home extends Component {
           const {isDark} = value
 
           return (
-            <App darkMode={isDark}>
+            <App data-testid="home" darkMode={isDark}>
               <Header />
-              <Banner data-testid="home" isDark={isDark}>
+              <Banner>
                 <SideBar />
                 {this.renderHome(isDark)}
               </Banner>

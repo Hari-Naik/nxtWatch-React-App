@@ -49,7 +49,7 @@ export const ModalContainer = styled.div`
   background-color: ${props => (props.isDark ? '#0f0f0f' : '#fff')};
   margin: auto;
 `
-export const ModalContainerText = styled.h1`
+export const ModalContainerText = styled.p`
   color: ${props => (props.isDark ? '#fff' : '#00306e')};
   font-family: 'roboto';
   font-size: 18px;

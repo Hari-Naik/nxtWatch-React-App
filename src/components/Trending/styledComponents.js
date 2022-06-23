@@ -19,7 +19,6 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   height: 90vh;
   width: 100%;
-  background-color: ${props => (props.isDark ? ' #0f0f0f' : '#f9f9f9')};
 `
 export const VideosListContainer = styled.div`
   display: flex;
@@ -27,9 +26,6 @@ export const VideosListContainer = styled.div`
   height: 90vh;
   overflow-y: scroll;
   width: 100%;
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 `
 
 export const TrendingBanner = styled.div`
@@ -182,7 +178,6 @@ export const FailureViewContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 90vh;
-  background-color: ${props => (props.isDark ? ' #0f0f0f' : '#f9f9f9')};
 `
 export const FailureViewImg = styled.img`
   width: 30%;

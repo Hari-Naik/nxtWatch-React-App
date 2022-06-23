@@ -47,7 +47,7 @@ const SideBar = () => (
                 </MenuText>
               </MenuCard>
             </Link>
-            <Link to="trending">
+            <Link to="/trending">
               <MenuCard
                 id="Trending"
                 onClick={onClickActiveTabId}

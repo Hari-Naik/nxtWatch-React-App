@@ -55,7 +55,7 @@ export const Title = styled.p`
 `
 export const ChannelName = styled.p`
   color: #64748b;
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 12px;
   margin-top: 0px;
   margin-right: 12px;

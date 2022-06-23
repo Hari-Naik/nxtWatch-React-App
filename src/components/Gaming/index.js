@@ -166,7 +166,7 @@ class Gaming extends Component {
           return (
             <App data-testid="gaming" darkMode={isDark}>
               <Header />
-              <Banner>
+              <Banner data-testid="banner">
                 <SideBar />
                 {this.renderGaming(isDark)}
               </Banner>

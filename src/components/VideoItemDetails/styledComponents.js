@@ -41,7 +41,7 @@ export const FailureViewText = styled.h1`
 
 export const FailureViewDescription = styled.p`
   color: #475569;
-  font-family: . 'Roboto';
+  font-family: 'Roboto';
   font-weight: 600;
   margin-top: 1px;
   text-align: center;
@@ -161,7 +161,7 @@ export const ChannelContent = styled.div`
   padding-top: 0px;
   margin-left: 15px;
 `
-export const ChannelName = styled.h1`
+export const ChannelName = styled.p`
   color: ${props => (props.isDark ? '#fff' : '#1e293b')};
   font-family: 'Roboto';
   font-size: 16px;

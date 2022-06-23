@@ -79,7 +79,7 @@ export const ChannelContent = styled.div`
   color: ${props => props.darkMode && '#fff'};
 `
 export const Title = styled.p`
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 13px;
   margin-top: 0px;
   margin-bottom: 8px;
@@ -88,13 +88,13 @@ export const Title = styled.p`
   }
 `
 export const ChannelName = styled.p`
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 12px
   margin-top: 0px;
   margin-right: 12px;
-  display: ${props => props.screen && 'none'};
+ display: ${props => props.screen && 'none'};
   @media (min-width: 768px) {
-    display: ${props => (props.screen ? 'flex' : 'none')};
+    display: ${props => props.screen && 'flex'};
     margin-bottom: 4px;
     font-size: 15px;
   }

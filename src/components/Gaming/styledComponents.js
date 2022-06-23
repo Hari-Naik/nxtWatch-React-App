@@ -16,10 +16,6 @@ export const LoaderContainer = styled.div`
   justify-content: center;
   height: 90vh;
   width: 100%;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
-  @media (min-width: 768px) {
-    width: 100%;
-  }
 `
 export const FailureViewContainer = styled.div`
   display: flex;
@@ -27,9 +23,8 @@ export const FailureViewContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height:90vh;
-  color:${props => props.isDark && '#fff'}
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
+  height: 90vh;
+  color: ${props => props.isDark && '#fff'};
 `
 export const FailureImg = styled.img`
   width: 30%;
@@ -95,7 +90,6 @@ export const VideosContainer = styled.div`
   align-items: center;
   height: 70vh;
   width: 100%;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 
 export const VideoContainer = styled.ul`
