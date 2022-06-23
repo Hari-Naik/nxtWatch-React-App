@@ -30,14 +30,10 @@ export const VideosListContainer = styled.div`
 
 export const TrendingBanner = styled.div`
   width: 100%;
-  height: 175px;
-  padding: 25px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
   background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
-  @media (min-width: 768px) {
-    width: 100%;
-    height: 120px;
-    padding-left: 15px;
-  }
 `
 
 export const TrendingCard = styled.div`

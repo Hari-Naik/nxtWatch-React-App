@@ -50,14 +50,10 @@ export const SuccessContainer = styled.div`
 
 export const GamingBanner = styled.div`
   width: 100%;
-  height: 175px;
-  padding: 25px;
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
-  @media (min-width: 768px) {
-    width: 100%;
-    height: 120px;
-    padding-left: 15px;
-  }
 `
 
 export const GamingCard = styled.div`

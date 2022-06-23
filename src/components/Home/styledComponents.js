@@ -22,23 +22,21 @@ export const VideosListContainer = styled.div`
   height: 90vh;
   overflow-y: scroll;
   width: 100%;
-  flex-grow: 1;
   color: ${props => props.darkMode && '#ffffff'};
 `
 
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 89%;
   height: 32px;
+  width: 90%;
   margin-top: 15px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid gray;
-  @media (min-width: 768px) {
+  @media (min-width: 566px) {
     width: 450px;
-    margin: 0px;
-    margin-left: 12px;
+    margin-left: 10px;
     margin-top: 12px;
   }
 `
@@ -121,11 +119,11 @@ export const CloseButton = styled.button`
 export const VideosContainer = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
   padding-left: 12px;
-  @media (min-width: 768px) {
+  @media (min-width: 567px) {
     flex-direction: row;
   }
 `

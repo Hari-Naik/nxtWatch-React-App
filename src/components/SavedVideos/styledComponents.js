@@ -135,48 +135,17 @@ export const FailureViewContainer = styled.div`
 export const FailureViewImg = styled.img`
   width: 30%;
 `
-// export const TrendingBanner = styled.div`
-//   width: 100%;
-//   height: 175px;
-//   padding: 25px;
-//   background-color: #ebebeb;
-//   @media (min-width: 768px) {
-//     padding-left: 15px;
-//   }
-// `
 
-// export const TrendingCard = styled.div`
-//   display: flex;
-//   align-items: center;
-//   @media (min-width: 768px) {
-//     margin-left: 85px;
-//   }
-// `
-// export const IconContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 60px;
-//   width: 60px;
-//   margin-right: 12px;
-//   background-color: #cbd5e1;
-//   border-radius: 50%;
-// `
-
-// export const Text = styled.h1`
-//   color: #000;
-//   font-family:"roboto"
-//   font-size: 22px;
-//   font-weight:500;
-// `
 export const TrendingBanner = styled.div`
   width: 100%;
-  height: 175px;
-  padding: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 25px;
   background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
   @media (min-width: 768px) {
     width: 100%;
-    height: 120px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     padding-left: 15px;
   }
 `
