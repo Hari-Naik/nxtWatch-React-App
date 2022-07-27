@@ -75,43 +75,32 @@ class Gaming extends Component {
     }
   }
 
-  renderFailureView = isDark => {
-    const img = isDark
-      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-    return (
-      <FailureViewContainer isDark={isDark}>
-        <FailureImg src={img} alt="failure view" />
-        <FailureViewText isDark={isDark}>
-          Oops! Something Went Wrong
-        </FailureViewText>
-        <FailureViewDescription>
-          We are having some trouble to complete your request. <br />
-          Please try again.
-        </FailureViewDescription>
-        <RetryBtn type="button" onClick={this.onClickRetry}>
-          Retry
-        </RetryBtn>
-      </FailureViewContainer>
-    )
-  }
-
-  //   renderVideoItem = (eachData, isDark) => {
-  //     const {id, thumbnailUrl, title, viewCount} = eachData
-
-  //     return (
-  //       <Link to={`videos/${id}`}>
-  //         <VideoItem key={id}>
-  //           <Image src={thumbnailUrl} alt="video thumbnail" />
-  //           <Title isDark={isDark}>{title}</Title>
-  //           <ViewsContainer isDark={isDark}>
-  //             <Views>{viewCount} Watching</Views>
-  //             <Views>Worldwide</Views>
-  //           </ViewsContainer>
-  //         </VideoItem>
-  //       </Link>
-  //     )
-  //   }
+  renderFailureView = isDark => (
+    <FailureViewContainer isDark={isDark}>
+      <FailureImg
+        src={
+          isDark
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        }
+        alt="failure view"
+      />
+      <FailureViewText isDark={isDark}>
+        Oops! Something Went Wrong
+      </FailureViewText>
+      <FailureViewDescription>
+        We are having some trouble to complete your request. <br />
+        Please try again.
+      </FailureViewDescription>
+      <RetryBtn
+        data-testid="retryButton"
+        type="button"
+        onClick={this.onClickRetry}
+      >
+        Retry
+      </RetryBtn>
+    </FailureViewContainer>
+  )
 
   renderSuccessView = isDark => {
     const {data} = this.state

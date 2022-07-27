@@ -51,34 +51,45 @@ export const SuccessContainer = styled.div`
 export const GamingBanner = styled.div`
   width: 100%;
   padding-left: 15px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
+  @media (min-width: 768px) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 `
 
 export const GamingCard = styled.div`
   display: flex;
   align-items: center;
   @media (min-width: 768px) {
-    margin-left: 85px;
+    margin-left: 25px;
   }
 `
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   margin-right: 12px;
   background-color: ${props => (props.isDark ? '#000' : '#cbd5e1')};
   border-radius: 50%;
+  @media (min-width: 768px) {
+    height: 60px;
+    width: 60px;
+  }
 `
 
 export const Text = styled.h1`
-  color: ${props => (props.isDark ? '#fff' : '#000')};
-  font-family:"roboto"
-  font-size: 22px;
-  font-weight:500;
+  color: ${props => (props.isDark ? '#e2e8f0' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 700;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 `
 export const VideosContainer = styled.div`
   display: flex;
@@ -110,7 +121,7 @@ export const FailureViewText = styled.h1`
 
 export const FailureViewDescription = styled.p`
   color: #475569;
-  font-family: . 'roboto';
+  font-family: 'Roboto';
   font-weight: 600;
   margin-top: 1px;
   text-align: center;

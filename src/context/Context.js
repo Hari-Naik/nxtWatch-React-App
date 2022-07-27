@@ -8,6 +8,10 @@ const Context = React.createContext({
   saveAndRemoveVideos: () => {},
   activeTabId: 'Home',
   onActiveTabId: () => {},
+  likedVideos: [],
+  onClickLike: () => {},
+  dislikedVideos: [],
+  onClickDislike: () => {},
 })
 
 export default Context

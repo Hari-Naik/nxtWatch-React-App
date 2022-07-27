@@ -30,35 +30,46 @@ export const VideosListContainer = styled.div`
 
 export const TrendingBanner = styled.div`
   width: 100%;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   padding-left: 15px;
-  background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
+  background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
+  @media (min-width: 768px) {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
 `
 
 export const TrendingCard = styled.div`
   display: flex;
   align-items: center;
   @media (min-width: 768px) {
-    margin-left: 85px;
+    margin-left: 25px;
   }
 `
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   margin-right: 12px;
   background-color: ${props => (props.isDark ? '#000' : '#cbd5e1')};
   border-radius: 50%;
+  @media (min-width: 768px) {
+    height: 60px;
+    width: 60px;
+  }
 `
 
 export const Text = styled.h1`
-  color: ${props => (props.isDark ? '#fff' : '#000')};
-  font-family:"roboto"
-  font-size: 22px;
-  font-weight:500;
+  color: ${props => (props.isDark ? '#e2e8f0' : '#1e293b')};
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 600;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
 `
 export const GetItNowBtn = styled.button`
   height: 32px;
@@ -80,12 +91,12 @@ export const VideosContainer = styled.ul`
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  width: 90%;
+  width: 98%;
+  margin: auto;
+  margin-top: 20px;
   padding-left: 12px;
   @media (min-width: 768px) {
     align-items: flex-start;
-    margin: auto;
-    margin-top: 20px;
   }
 `
 export const VideoItem = styled.li`

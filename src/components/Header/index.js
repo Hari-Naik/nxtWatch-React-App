@@ -69,17 +69,17 @@ const Header = props => (
               >
                 {close => (
                   <ModalContainer isDark={isDark}>
-                    <ModalContainerText>
+                    <ModalContainerText isDark={isDark}>
                       Are you sure, you want to logout
-                      <ButtonsContainer>
-                        <ModalButton outline onClick={() => close()}>
-                          Cancel
-                        </ModalButton>
-                        <ModalButton type="button" onClick={onConfirmLogout}>
-                          Confirm
-                        </ModalButton>
-                      </ButtonsContainer>
                     </ModalContainerText>
+                    <ButtonsContainer>
+                      <ModalButton outline onClick={() => close()}>
+                        Cancel
+                      </ModalButton>
+                      <ModalButton type="button" onClick={onConfirmLogout}>
+                        Confirm
+                      </ModalButton>
+                    </ButtonsContainer>
                   </ModalContainer>
                 )}
               </Popup>
@@ -116,15 +116,15 @@ const Header = props => (
                   <ModalContainer isDark={isDark}>
                     <ModalContainerText isDark={isDark}>
                       Are you sure, you want to logout
-                      <div>
-                        <ModalButton outline onClick={() => close()}>
-                          Cancel
-                        </ModalButton>
-                        <ModalButton type="button" onClick={onConfirmLogout}>
-                          Confirm
-                        </ModalButton>
-                      </div>
                     </ModalContainerText>
+                    <ButtonsContainer>
+                      <ModalButton outline onClick={() => close()}>
+                        Cancel
+                      </ModalButton>
+                      <ModalButton type="button" onClick={onConfirmLogout}>
+                        Confirm
+                      </ModalButton>
+                    </ButtonsContainer>
                   </ModalContainer>
                 )}
               </Popup>

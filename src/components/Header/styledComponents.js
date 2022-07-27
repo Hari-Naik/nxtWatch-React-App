@@ -8,7 +8,7 @@ export const HeaderContainer = styled.nav`
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: ${props => (props.isDark ? '#313131' : '#ffffff')};
+  background-color: ${props => (props.isDark ? '#212121' : '#ffffff')};
 `
 export const WebsiteLogo = styled.img`
   width: 90px;
@@ -51,7 +51,7 @@ export const ModalContainer = styled.div`
 `
 export const ModalContainerText = styled.p`
   color: ${props => (props.isDark ? '#fff' : '#00306e')};
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;
   text-align: center;

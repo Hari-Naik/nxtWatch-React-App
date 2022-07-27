@@ -58,10 +58,10 @@ class Trending extends Component {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const options = {
-      method: 'GET',
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
+      method: 'GET',
     }
     const apiUrl = 'https://apis.ccbp.in/videos/trending'
     const response = await fetch(apiUrl, options)
@@ -77,23 +77,43 @@ class Trending extends Component {
     }
   }
 
-  renderFailureView = isDark => (
-    <FailureViewContainer isDark={isDark}>
-      <FailureViewImg
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureViewText isDark={isDark}>
-        Oops! Something Went Wrong
-      </FailureViewText>
-      <FailureViewDescription>
-        We are having some trouble to complete your request. <br />
-        Please try again
-      </FailureViewDescription>
-      <GetItNowBtn type="button" onClick={this.onClickRetry}>
-        Retry
-      </GetItNowBtn>
-    </FailureViewContainer>
+  renderFailureView = () => (
+    <Context.Consumer>
+      {value => {
+        const {isDark} = value
+
+        /* const img = isDark
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png' */
+
+        return (
+          <FailureViewContainer isDark={isDark}>
+            <FailureViewImg
+              src={
+                isDark
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+              }
+              alt="failure view"
+            />
+            <FailureViewText isDark={isDark}>
+              Oops! Something Went Wrong
+            </FailureViewText>
+            <FailureViewDescription>
+              We are having some trouble to complete your request. <br />
+              Please try again
+            </FailureViewDescription>
+            <GetItNowBtn
+              data-testid="retryButton"
+              type="button"
+              onClick={this.onClickRetry}
+            >
+              Retry
+            </GetItNowBtn>
+          </FailureViewContainer>
+        )
+      }}
+    </Context.Consumer>
   )
 
   renderVideos = () => {

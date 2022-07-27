@@ -26,48 +26,6 @@ const SavedVideos = () => (
 
       const showNoVideosView = savedVideosList.length === 0
 
-      /* const renderVideo = eachData => {
-        const {
-          id,
-          thumbnailUrl,
-          title,
-          channelName,
-          profileImgUrl,
-          publishedAt,
-          viewCount,
-        } = eachData
-
-        const publisedTime = formatDistanceToNow(new Date(publishedAt)).split(
-          ' ',
-        )
-        let publishedDate
-        if (publisedTime.length === 2) {
-          publishedDate = publisedTime[0] + publisedTime[1]
-        } else {
-          publishedDate = publisedTime[1] + publisedTime[2]
-        }
-
-        return (
-          <Link to={`videos/${id}`}>
-            <VideoItem>
-              <ThumbnailImg src={thumbnailUrl} alt="video thumbnail" />
-              <ChannelContainer>
-                <ProfileImage src={profileImgUrl} alt="profile" />
-                <ChannelContent darkMode={isDark}>
-                  <Title>{title}</Title>
-                  <ChannelName screen>{channelName}</ChannelName>
-                  <ViewsContainer darkMode={isDark}>
-                    <ChannelName>{channelName}</ChannelName>
-                    <ViewsCount>{viewCount} views</ViewsCount>
-                    <PublishedDate>. {publishedDate} ago </PublishedDate>
-                  </ViewsContainer>
-                </ChannelContent>
-              </ChannelContainer>
-            </VideoItem>
-          </Link>
-        )
-      } */
-
       const renderVideos = () => (
         <VideosContainer>
           {savedVideosList.map(eachData => (
@@ -78,7 +36,7 @@ const SavedVideos = () => (
 
       const renderSavedVideos = () => (
         <VideosListContainer>
-          <TrendingBanner isDark={isDark}>
+          <TrendingBanner data-testid="banner" isDark={isDark}>
             <TrendingCard>
               <IconContainer isDark={isDark}>
                 <MdWhatshot size={25} color="#ff0437" />
@@ -97,7 +55,7 @@ const SavedVideos = () => (
             alt="no saved videos"
           />
           <FailureViewText isDark={isDark}>
-            No Saved Videos Found
+            No saved videos found
           </FailureViewText>
           <FailureViewDescription>
             You can save your videos while watching them

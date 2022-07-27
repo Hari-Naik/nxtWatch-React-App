@@ -26,7 +26,7 @@ const SideBar = () => (
         onActiveTabId(e.target.innerHTML)
       }
 
-      const colorValue = isDark ? '#fff' : '#313131'
+      const colorValue = isDark ? '#cccccc' : '#424242'
 
       return (
         <SidebarContainer isDark={isDark}>
@@ -39,7 +39,7 @@ const SideBar = () => (
                 isDark={isDark}
               >
                 <AiFillHome
-                  size={20}
+                  size={18}
                   color={activeTabId === 'Home' ? '#ff0000' : colorValue}
                 />
                 <MenuText dark={isDark} isActive={activeTabId === 'Home'}>
@@ -55,7 +55,7 @@ const SideBar = () => (
                 isDark={isDark}
               >
                 <MdWhatshot
-                  size={20}
+                  size={18}
                   color={activeTabId === 'Trending' ? '#ff0000' : colorValue}
                 />
                 <MenuText dark={isDark} isActive={activeTabId === 'Trending'}>
@@ -71,7 +71,7 @@ const SideBar = () => (
                 isDark={isDark}
               >
                 <SiYoutubegaming
-                  size={20}
+                  size={18}
                   color={activeTabId === 'Gaming' ? '#ff0000' : colorValue}
                 />
                 <MenuText dark={isDark} isActive={activeTabId === 'Gaming'}>
@@ -83,20 +83,20 @@ const SideBar = () => (
               <MenuCard
                 id="savedVideos"
                 onClick={onClickActiveTabId}
-                isActive={activeTabId === 'Saved Videos'}
+                isActive={activeTabId === 'Saved videos'}
                 isDark={isDark}
               >
                 <BiListPlus
-                  size={24}
+                  size={20}
                   color={
-                    activeTabId === 'Saved Videos' ? '#ff0000' : colorValue
+                    activeTabId === 'Saved videos' ? '#ff0000' : colorValue
                   }
                 />
                 <MenuText
                   dark={isDark}
-                  isActive={activeTabId === 'Saved Videos'}
+                  isActive={activeTabId === 'Saved videos'}
                 >
-                  Saved Videos
+                  Saved videos
                 </MenuText>
               </MenuCard>
             </Link>

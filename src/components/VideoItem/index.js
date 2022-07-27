@@ -8,6 +8,7 @@ import {
   Title,
   ChannelName,
   ViewsContainer,
+  ViewContainer,
   ViewsCount,
   PublishedDate,
   ThumbnailImg,
@@ -22,6 +23,7 @@ const VideoItem = props => (
       const {isDark} = value
 
       const {eachItem, notHome} = props
+
       const {
         id,
         channel,
@@ -31,15 +33,13 @@ const VideoItem = props => (
         viewCount,
       } = eachItem
 
-      const publishedTime = formatDistanceToNow(new Date(publishedAt)).split(
-        ' ',
-      )
+      const published = formatDistanceToNow(new Date(publishedAt)).split(' ')
 
-      let publishedDate
-      if (publishedTime.length === 2) {
-        publishedDate = publishedTime[0] + publishedTime[1]
+      let videoPublishedAt
+      if (published.length === 2) {
+        videoPublishedAt = `${published[0]} ${published[1]}`
       } else {
-        publishedDate = publishedTime[1] + publishedTime[2]
+        videoPublishedAt = `${published[1]} ${published[2]}`
       }
 
       return (
@@ -59,13 +59,16 @@ const VideoItem = props => (
                 />
                 <ChannelContent isDark={isDark}>
                   <Title propValue={notHome}>{title}</Title>
-                  <ChannelName screen>{channel.name}</ChannelName>
                   <ViewsContainer isDark={isDark}>
-                    <ChannelName>{channel.name}</ChannelName>
-                    <ViewsCount>{viewCount} views</ViewsCount>
-                    <PublishedDate>
-                      <strong>.</strong> {publishedDate} ago
-                    </PublishedDate>
+                    <ChannelName propValue={notHome}>
+                      {channel.name}
+                    </ChannelName>
+                    <ViewContainer>
+                      <ViewsCount>{viewCount} views</ViewsCount>
+                      <PublishedDate>
+                        <strong>.</strong> {videoPublishedAt} ago
+                      </PublishedDate>
+                    </ViewContainer>
                   </ViewsContainer>
                 </ChannelContent>
               </ChannelContainer>

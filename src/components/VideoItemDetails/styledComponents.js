@@ -59,18 +59,21 @@ export const RetryBtn = styled.button`
 export const VideoItemDetailsContainer = styled.div`
   width: 100%;
   height: 90vh;
-  padding-top: 25px;
-//   overflow-y: scroll;
-  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};s
+  overflow-y: scroll;
+  padding-bottom: 25px;
+  background-color: ${props => (props.isDark ? '#0f0f0f' : '#f9f9f9')};
 `
 export const ResponsiveContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
-  margin-left: auto;
-  margin-right: 25px;
-  //   padding-bottom: 25px;
+  width: 100%;
+  height: 90vh;
+  margin-top: 15px;
+  @media (min-width: 768px) {
+    width: 90%;
+    margin-left: 25px;
+  }
 `
 export const Title = styled.p`
   color: ${props => (props.isDark ? '#fff' : '#1e293b')};
@@ -78,17 +81,23 @@ export const Title = styled.p`
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 0px;
+  padding-left: 15px;
+  @media (min-width: 768px) {
+    padding-left: 0px;
+  }
 `
 export const ViewsAndLikesContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding-right: 5px;
+  //   padding-right: 5px;
+  padding-left: 15px;
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding-left: 0px;
   }
 `
 export const VideoContainer = styled.div`
@@ -140,12 +149,27 @@ export const DisLikeButton = styled.button`
 export const ButtonText = styled.p`
   font-family: 'Roboto';
   font-size: 15px;
-  padding-left: 8px;
+  font-weight: 500;
+  padding-left: 4px;
+`
+
+export const HrLine = styled.hr`
+  width: 96%;
+  color: ${props => (props.isDark ? '#64748b' : '#ccc')};
+  background-color: ${props => (props.isDark ? '#64748b' : '#ccc')};
+  margin-bottom: 25px;
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ChannelProfileContainer = styled.div`
   display: flex;
   align-items: flex-start;
+  padding-left: 15px;
+  @media (min-width: 768px) {
+    padding-left: 0px;
+  }
 `
 export const Image = styled.img`
   height: 40px;
@@ -184,6 +208,7 @@ export const Description = styled.p`
   color: ${props => (props.isDark ? '#fff' : '#64748b')};
   font-family: 'Roboto';
   font-size: 14px;
+  padding-left: 15px;
   @media (min-width: 768px) {
     padding-left: 55px;
   }

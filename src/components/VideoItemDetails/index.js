@@ -32,6 +32,7 @@ import {
   DisLikeButton,
   SaveButton,
   ButtonText,
+  HrLine,
   ChannelProfileContainer,
   Image,
   ChannelContent,
@@ -51,8 +52,8 @@ class VideoItemDetails extends Component {
   state = {
     data: {},
     apiStatus: apiStatusConstants.initial,
-    isLiked: false,
-    isDisLiked: false,
+    // isLiked: false,
+    // isDisLiked: false,
   }
 
   componentDidMount() {
@@ -97,7 +98,7 @@ class VideoItemDetails extends Component {
 
     if (response.ok === true) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
+      //   console.log(fetchedData)
       const formattedData = this.formatData(fetchedData.video_details)
       this.setState({
         data: formattedData,
@@ -111,8 +112,16 @@ class VideoItemDetails extends Component {
   renderSuccessView = () => (
     <Context.Consumer>
       {value => {
-        const {saveAndRemoveVideos, isDark, activeSavedVideosIds} = value
-        const {data, isLiked, isDisLiked} = this.state
+        const {
+          saveAndRemoveVideos,
+          isDark,
+          activeSavedVideosIds,
+          likedVideos,
+          dislikedVideos,
+          onClickDislike,
+          onClickLike,
+        } = value
+        const {data} = this.state
 
         const onClickSaveAndRemoveVideos = () => {
           saveAndRemoveVideos(data)
@@ -123,6 +132,7 @@ class VideoItemDetails extends Component {
             isLiked: !prevState.isLiked,
             isDisLiked: false,
           }))
+          onClickLike(data.id)
         }
 
         const onClickDisLikeButton = () => {
@@ -130,44 +140,50 @@ class VideoItemDetails extends Component {
             isDisLiked: !prevState.isDisLiked,
             isLiked: false,
           }))
+          onClickDislike(data.id)
         }
 
         const {
+          id,
           channel,
           videoUrl,
           title,
           viewCount,
           publishedAt,
-          /* profileImgUrl,
-          subscriberCount, */
           description,
         } = data
 
-        const publishedTime = formatDistanceToNow(new Date(publishedAt)).split(
-          ' ',
-        )
-        let publishedDate
-        if (publishedTime.length === 2) {
-          publishedDate = publishedTime[0] + publishedTime[1]
+        const published = formatDistanceToNow(new Date(publishedAt)).split(' ')
+        let videoPublishedAt
+        if (published.length === 2) {
+          videoPublishedAt = `${published[0]} ${published[1]}`
         } else {
-          publishedDate = publishedTime[1] + publishedTime[2]
+          videoPublishedAt = `${published[1]} ${published[2]}`
         }
 
         const isActive = activeSavedVideosIds.some(
           activeId => activeId === data.id,
         )
 
+        const isLiked = likedVideos.some(eachId => eachId === data.id)
+        const isDisLiked = dislikedVideos.some(eachId => eachId === data.id)
+
         return (
           <VideoItemDetailsContainer isDark={isDark}>
             <ResponsiveContainer>
               <VideoContainer>
-                <ReactPlayer url={videoUrl} width="100%" controls />
+                <ReactPlayer
+                  url={videoUrl}
+                  width="100%"
+                  height={360}
+                  controls
+                />
               </VideoContainer>
               <Title isDark={isDark}>{title}</Title>
               <ViewsAndLikesContainer>
                 <ViewsContainer>
-                  <Views isDark={isDark}>{viewCount} Views</Views>
-                  <Views isDark={isDark}>. {publishedDate} ago</Views>
+                  <Views isDark={isDark}>{viewCount} views</Views>
+                  <Views isDark={isDark}>. {videoPublishedAt} ago</Views>
                 </ViewsContainer>
                 <LikesContainer>
                   <LikeButton
@@ -190,14 +206,14 @@ class VideoItemDetails extends Component {
                     type="button"
                     onClick={onClickSaveAndRemoveVideos}
                     isSaved={isActive}
-                    id={data.id}
+                    id={id}
                   >
                     <BiListPlus size={22} />
-                    <ButtonText>{isActive ? 'saved' : 'save'}</ButtonText>
+                    <ButtonText>{isActive ? 'Saved' : 'Save'}</ButtonText>
                   </SaveButton>
                 </LikesContainer>
               </ViewsAndLikesContainer>
-              <hr color={isDark ? '#fff' : '#000'} width="100%" />
+              <HrLine isDark={isDark} />
               <ChannelProfileContainer>
                 <Image src={channel.profile_image_url} alt="channel logo" />
                 <ChannelContent>
@@ -215,27 +231,32 @@ class VideoItemDetails extends Component {
     </Context.Consumer>
   )
 
-  renderFailureView = isDark => {
-    const img = isDark
-      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-
-    return (
-      <FailureViewContainer isDark={isDark}>
-        <FailureImg src={img} alt="failure view" />
-        <FailureViewText isDark={isDark}>
-          Oops! Something Went Wrong
-        </FailureViewText>
-        <FailureViewDescription>
-          We are having some trouble to complete your request. <br />
-          Please try again.
-        </FailureViewDescription>
-        <RetryBtn type="button" onClick={this.onClickRetry}>
-          Retry
-        </RetryBtn>
-      </FailureViewContainer>
-    )
-  }
+  renderFailureView = isDark => (
+    <FailureViewContainer isDark={isDark}>
+      <FailureImg
+        src={
+          isDark
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        }
+        alt="failure view"
+      />
+      <FailureViewText isDark={isDark}>
+        Oops! Something Went Wrong
+      </FailureViewText>
+      <FailureViewDescription>
+        We are having some trouble to complete your request. <br />
+        Please try again.
+      </FailureViewDescription>
+      <RetryBtn
+        data-testid="retryButton"
+        type="button"
+        onClick={this.onClickRetry}
+      >
+        Retry
+      </RetryBtn>
+    </FailureViewContainer>
+  )
 
   renderLoadingView = isDark => (
     <LoaderContainer isDark={isDark} data-testid="loader">

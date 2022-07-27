@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Login from './components/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 import Home from './components/Home'
@@ -18,6 +18,8 @@ class App extends Component {
     activeSavedVideosIds: [],
     isDark: false,
     activeTabId: 'initial',
+    likedVideos: [],
+    dislikedVideos: [],
   }
 
   onToggleTheme = () => {
@@ -53,23 +55,63 @@ class App extends Component {
     this.setState({activeTabId: id})
   }
 
+  onClickLike = id => {
+    const {likedVideos, dislikedVideos} = this.state
+    const isIdPresent = likedVideos.some(eachId => eachId === id)
+
+    const filterDislikedVideos = dislikedVideos.filter(eachId => eachId !== id)
+
+    this.setState({dislikedVideos: filterDislikedVideos})
+
+    if (isIdPresent === false) {
+      this.setState(prevState => ({
+        likedVideos: [...prevState.likedVideos, id],
+      }))
+    }
+  }
+
+  onClickDisLike = id => {
+    const {likedVideos, dislikedVideos} = this.state
+    const isIdPresent = dislikedVideos.some(eachId => eachId === id)
+
+    const filterlikedVideos = likedVideos.filter(eachId => eachId !== id)
+
+    this.setState({likedVideos: filterlikedVideos})
+
+    if (isIdPresent === false) {
+      this.setState(prevState => ({
+        dislikedVideos: [...prevState.dislikedVideos, id],
+      }))
+    }
+  }
+
   render() {
     const {
       savedVideosList,
       isDark,
       activeSavedVideosIds,
       activeTabId,
+      likedVideos,
+      dislikedVideos,
     } = this.state
+
+    // console.log(likedVideos)
+    // console.log(dislikedVideos)
+
     return (
       <Context.Provider
         value={{
           isDark,
           savedVideosList,
+          likedVideos,
+          dislikedVideos,
           activeTabId,
           activeSavedVideosIds,
           onToggleTheme: this.onToggleTheme,
           saveAndRemoveVideos: this.saveAndRemoveVideos,
           onActiveTabId: this.onActiveTabId,
+          onClickLike: this.onClickLike,
+          onClickDislike: this.onClickDisLike,
         }}
       >
         <Switch>
@@ -84,6 +126,7 @@ class App extends Component {
             component={VideoItemDetails}
           />
           <Route path="/bad-path" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </Context.Provider>
     )

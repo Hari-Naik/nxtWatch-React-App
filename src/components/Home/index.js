@@ -11,6 +11,7 @@ import VideoItem from '../VideoItem'
 import {
   App,
   Banner,
+  HomeContainer,
   LoaderContainer,
   VideosListContainer,
   Input,
@@ -131,49 +132,76 @@ class Home extends Component {
           <GrFormClose size={20} />
         </CloseButton>
       </LogoCloseIconContainer>
-      <BannerDescription>Buy Nxt Watch Premium</BannerDescription>
+      <BannerDescription>
+        Buy Nxt Watch Premium prepaid plans with UPI
+      </BannerDescription>
       <GetItNowBtn type="button" outline>
         GET IT NOW
       </GetItNowBtn>
     </BannerContainer>
   )
 
-  renderFailureView = isDark => {
-    const {searchInput} = this.state
-    const img = isDark
-      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+  renderBanner = () => (
+    <Context.Consumer>
+      {value => {
+        const {isDark} = value
+        const {showBannerImg, searchInput} = this.state
+        return (
+          <VideosListContainer isDark={isDark}>
+            {showBannerImg && this.renderBannerImg()}
+            <InputContainer>
+              <Input
+                type="search"
+                placeholder="Search"
+                onChange={this.onChangeSearchInput}
+                value={searchInput}
+              />
+              <SearchButton
+                type="button"
+                data-testid="searchButton"
+                onClick={this.getSearchOutput}
+                isDark={isDark}
+              >
+                <AiOutlineSearch size={20} color="#7e858e" />
+              </SearchButton>
+            </InputContainer>
+            {/* {data.length === 0
+          ? this.renderNoSearchResultsView(isDark)
+          : this.renderVideos(isDark)} */}
+          </VideosListContainer>
+        )
+      }}
+    </Context.Consumer>
+  )
 
-    return (
-      <FailureViewContainer isDark={isDark}>
-        <InputContainer>
-          <Input
-            type="search"
-            onChange={this.onChangeSearchInput}
-            value={searchInput}
-          />
-          <SearchButton
-            type="button"
-            data-testid="searchButton"
-            onClick={this.getSearchOutput}
-          >
-            <AiOutlineSearch size={20} color="#fff" />
-          </SearchButton>
-        </InputContainer>
-        <FailureViewContent>
-          <FailureViewImg src={img} alt="failure view" />
-          <FailureViewText>Oops! Something Went Wrong</FailureViewText>
-          <FailureViewDescription>
-            We are having some trouble to complete your request.
-            <br /> Please try again.
-          </FailureViewDescription>
-          <GetItNowBtn type="button" onClick={this.onClickRetry}>
-            Retry
-          </GetItNowBtn>
-        </FailureViewContent>
-      </FailureViewContainer>
-    )
-  }
+  renderFailureView = isDark => (
+    <FailureViewContainer isDark={isDark}>
+      <FailureViewContent>
+        <FailureViewImg
+          src={
+            isDark
+              ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+              : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+          }
+          alt="failure view"
+        />
+        <FailureViewText isDark={isDark}>
+          Oops! Something Went Wrong
+        </FailureViewText>
+        <FailureViewDescription isDark={isDark}>
+          We are having some trouble to complete your request.
+          <br /> Please try again.
+        </FailureViewDescription>
+        <GetItNowBtn
+          data-testid="retryButton"
+          type="button"
+          onClick={this.onClickRetry}
+        >
+          Retry
+        </GetItNowBtn>
+      </FailureViewContent>
+    </FailureViewContainer>
+  )
 
   renderNoSearchResultsView = isDark => (
     <NoSearchResultsContainer isDark={isDark}>
@@ -181,8 +209,8 @@ class Home extends Component {
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
         alt="no videos"
       />
-      <FailureViewText isDark={isDark}>No Search Results Found</FailureViewText>
-      <FailureViewDescription>
+      <FailureViewText isDark={isDark}>No Search results found</FailureViewText>
+      <FailureViewDescription isDark={isDark}>
         Try different key words or remove search filter
       </FailureViewDescription>
       <GetItNowBtn type="button" onClick={this.onClickRetry}>
@@ -192,28 +220,13 @@ class Home extends Component {
   )
 
   renderSuccessView = isDark => {
-    const {showBannerImg, searchInput, data} = this.state
+    const {data} = this.state
     return (
-      <VideosListContainer isDark={isDark}>
-        {showBannerImg && this.renderBannerImg()}
-        <InputContainer>
-          <Input
-            type="search"
-            onChange={this.onChangeSearchInput}
-            value={searchInput}
-          />
-          <SearchButton
-            type="button"
-            data-testid="searchButton"
-            onClick={this.getSearchOutput}
-          >
-            <AiOutlineSearch size={20} color="#fff" />
-          </SearchButton>
-        </InputContainer>
+      <>
         {data.length === 0
           ? this.renderNoSearchResultsView(isDark)
           : this.renderVideos(isDark)}
-      </VideosListContainer>
+      </>
     )
   }
 
@@ -249,7 +262,10 @@ class Home extends Component {
               <Header />
               <Banner>
                 <SideBar />
-                {this.renderHome(isDark)}
+                <HomeContainer>
+                  {this.renderBanner()}
+                  {this.renderHome(isDark)}
+                </HomeContainer>
               </Banner>
             </App>
           )

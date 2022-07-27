@@ -28,23 +28,9 @@ export const VideosContainer = styled.ul`
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  padding-left: 12px;
+  padding-left: 25px;
 `
-export const VideoItem = styled.li`
-  list-style-type: none;
-  width: 100%;
-  height: 200px;
-  margin-bottom: 35px;
-  @media (min-width: 768px) {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    margin: 0px;
-    margin-left: 25px;
-    margin-right: 15px;
-    margin-bottom: 15px;
-  }
-`
+
 export const ThumbnailImg = styled.img`
   width: 365px;
   height: 178px;
@@ -138,15 +124,14 @@ export const FailureViewImg = styled.img`
 
 export const TrendingBanner = styled.div`
   width: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   padding-left: 25px;
-  background-color: ${props => (props.isDark ? '#424242' : '#ebebeb')};
+  background-color: ${props => (props.isDark ? '#181818' : '#ebebeb')};
   @media (min-width: 768px) {
     width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 `
 
@@ -154,25 +139,32 @@ export const TrendingCard = styled.div`
   display: flex;
   align-items: center;
   @media (min-width: 768px) {
-    margin-left: 85px;
+    margin-left: 25px;
   }
 `
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   margin-right: 12px;
   background-color: ${props => (props.isDark ? '#000' : '#cbd5e1')};
   border-radius: 50%;
+  @media (min-width: 768px) {
+    height: 60px;
+    width: 60px;
+  }
 `
 
 export const Text = styled.h1`
-  color: ${props => (props.isDark ? '#fff' : '#000')};
-  font-family:"roboto"
-  font-size: 22px;
-  font-weight:500;
+  color: ${props => (props.isDark ? '#e2e8f0' : '#1e293b')};
+  font-family:"Roboto"
+  font-size: 18px;
+  font-weight:700;
+@media(min-width:768px){
+    font-size: 22px;
+}
 `
 
 export const FailureViewText = styled.h1`

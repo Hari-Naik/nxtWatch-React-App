@@ -5,9 +5,8 @@ export const SidebarContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   min-height: 90vh;
-  //   max-height: 100vh;
   padding-top: 25px;
-  background-color: ${props => (props.isDark ? '#313131' : '#ffffff')};
+  background-color: ${props => (props.isDark ? '#212121' : '#ffffff')};
   @media (min-width: 768px) {
     display: flex;
     width: 35vh;
@@ -27,7 +26,7 @@ export const MenuCard = styled.div`
   margin-bottom: 8px;
   background-color: ${props =>
     props.isDark ? props.isActive && ' #606060' : props.isActive && '#e2e8f0'};
-  @media (min-width: 592px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
     margin-bottom: 0px;
@@ -37,12 +36,12 @@ export const MenuCard = styled.div`
 `
 
 export const MenuText = styled.h1`
-  color: ${props => (props.dark ? '#fff' : '#313131')};
+  color: ${props => (props.dark ? '#f8fafc' : '#313131')};
   font-family: 'Roboto';
-  font-size: 16px;
+  font-size: 15px;
   font-weight: ${props => (props.isActive ? '800' : '500')};
   text-decoration: none;
-  padding-left: 15px;
+  padding-left: 20px;
   @media (max-width: 592px) {
     padding-left: 0px;
     margin-left: 15px;
@@ -61,9 +60,9 @@ export const ContactusSection = styled.div`
 `
 export const ContactusText = styled.p`
   color: ${props => (props.dark ? '#fff' : '#1e293b')};
-  font-family: 'roboto';
-  font-size: 18px;
-  font-weight: 500;
+  font-family: 'Roboto';
+  font-size: 15px;
+  font-weight: 700;
 `
 export const SocialMediaContainer = styled.div`
   display: flex;
@@ -76,7 +75,7 @@ export const Image = styled.img`
 `
 export const Description = styled.p`
   color: ${props => (props.dark ? '#fff' : '#1e293b')};
-  font-family: 'roboto';
+  font-family: 'Roboto';
   font-size: 16px;
   font-weight: 500;
 `

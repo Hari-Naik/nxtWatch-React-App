@@ -12,6 +12,7 @@ import {
   Input,
   CheckboxContainer,
   CheckboxInput,
+  ShowPasswordText,
   Button,
   ErrorMsg,
 } from './styledComponents'
@@ -100,29 +101,27 @@ class Login extends Component {
                 <WebsiteLogo src={logo} alt="website logo" />
                 <FormContainer onSubmit={this.submitForm}>
                   <Label htmlFor="username" darkMode={isDark}>
-                    {' '}
-                    USERNAME{' '}
+                    USERNAME
                   </Label>
                   <>
                     <Input
                       darkMode={isDark}
                       id="username"
                       type="text"
-                      placeholder="username"
+                      placeholder="Username"
                       value={username}
                       onChange={this.onChangeUsername}
                     />
                   </>
                   <Label htmlFor="password" darkMode={isDark}>
-                    {' '}
-                    PASSWORD{' '}
+                    PASSWORD
                   </Label>
                   <>
                     <Input
                       darkMode={isDark}
                       id="password"
                       type={inputType}
-                      placeholder="password"
+                      placeholder="Password"
                       value={password}
                       onChange={this.onChangePassword}
                     />
@@ -133,10 +132,9 @@ class Login extends Component {
                       id="checkbox"
                       onChange={this.onClickCheckBox}
                     />
-                    <Label htmlFor="checkbox" darkMode={isDark}>
-                      {' '}
-                      Show Password{' '}
-                    </Label>
+                    <ShowPasswordText htmlFor="checkbox" isDark={isDark}>
+                      Show Password
+                    </ShowPasswordText>
                   </CheckboxContainer>
                   <Button type="submit">Login</Button>
                   {showErrorMsg && <ErrorMsg>*{errorMsg}</ErrorMsg>}
